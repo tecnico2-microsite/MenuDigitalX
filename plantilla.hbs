@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="static/logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title>Bar Casino</title>
+</head>
+<body>
+    <header class="logo">
+        <a style="text-decoration:none;" href="#" id="logoImage">
+            <!--
+			<img src="static/logo.png" width="200" height="200"/>-->
+			<h1 style="color: #e9c47e;">Bar Casino</h1>
+        </a>
+    </header>
+    <main>
+        {{#each categorias}}
+  <article>
+    <h2>{{nombre}}</h2>
+    {{#each subcategorias}}
+      <details>
+        <summary>{{nombre}}</summary>
+        <section>
+          <h1>{{nombre}}</h1>
+          {{#if sub_descripcion}}
+          <p>{{sub_descripcion}}</p>
+          {{/if}}
+          {{#each articulos}}
+            <div class="producto">
+			<!-- {{id}}  -->
+              <div class="titulo-precio">
+                <p class="titulo">{{titulo}}</p>
+                <p class="precio">{{precio}}</p>
+              </div>
+              {{#if opciones}}
+              {{#each opciones}}
+              <p class="descripcion">{{this}}</p>
+              {{/each}}
+              {{/if}}
+              {{#if descripcion}}
+                <p class="descripcion">{{descripcion}}</p>
+              {{/if}}
+              {{#if descripcion_adicional}}
+                <p class="descripcion">{{descripcion_adicional}}</p>
+              {{/if}}
+            </div>
+          {{/each}}
+        </section>
+      </details>
+    {{/each}}
+  </article>
+{{/each}}
+
+        
+
+
+
+
+    </main>
+
+
+    <footer>
+        <div class="footer">
+            <span>
+                <!--<img src="static/logonobg.png" alt="" width="100"><br />-->
+				<h1>Bar Casino</h1>
+                
+            </span>
+            <span>
+			<!--
+                <p>CONTACTO</p>
+                
+                <p>Liniers 148, Carlos Paz, Córdoba</p>
+				-->
+            </span>
+            <span>
+                <a class="link"><img width="40" src="static/facebooklogo.png"/></a>
+                <a class="link"><img width="35" src="static/instagramlogo.png"/></a>
+            </span>
+        </div>
+
+    </footer>
+<br />
+<div style="color:white; width:100%; text-align:center;"> <h3>Powered by <a style="color:white;" href="https://microsite.com.ar" target="_blank">Microsite</a></h3></div>
+
+<div id="capa-publicidad" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; background: black;">
+    <video id="video-player" style="width: 100%; height: 100%; object-fit: cover;" muted playsinline></video>
+</div>
+
+<script>
+    const videos = {{{ listaVideos }}};
+    const videoPlayer = document.getElementById('video-player');
+    const capaPubli = document.getElementById('capa-publicidad');
+    let indiceVideo = 0;
+    const intermission = {{{intermission}}}
+    const TIEMPO_ESPERA = parseFloat(intermission) * 60 * 1000; 
+
+    console.log(`Modo video: ${intermission}m`)
+
+    function reproducirPublicidad() {
+        if (!videos || videos.length === 0) return;
+
+
+        videoPlayer.src = 'static/' + videos[indiceVideo];
+        
+
+        capaPubli.style.display = 'block';
+        videoPlayer.play().catch(e => console.log("Smart TV bloqueó el autoplay", e));
+
+        indiceVideo++;
+        if (indiceVideo >= videos.length) {
+          indiceVideo=0;
+        } 
+        videoPlayer.onended = () => {
+          capaPubli.style.display = 'none';
+          setTimeout(reproducirPublicidad, TIEMPO_ESPERA);
+        }
+
+
+        
+    }
+
+
+    setTimeout(reproducirPublicidad, TIEMPO_ESPERA);
+</script>
+
+
+</body>
+</html>
