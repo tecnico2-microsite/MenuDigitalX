@@ -36,9 +36,9 @@ set video= MINUTOS entre cada video publicitario, puede dejarse vacío en caso d
 **Importante:** las rutas **deben** terminar en contrabarra \\
 No deben utilizarse comillas.
 
-Por último, ejecutamos el archivo "ACTUALIZAR_X.bat", podemos crear una tarea programada para ejecutarse automáticamente cada X tiempo, se deja un [archivo](https://github.com/tecnico2-microsite/MenuDigitalX/blob/master/doc/ACTUALIZAR_X.xml) para importar la tarea (solo debe cambiarse la ruta al archivo como se ve en la imagen)
+Por último, ejecutamos el archivo "ACTUALIZAR_X.bat", podemos crear una tarea programada para ejecutarse automáticamente cada X tiempo, se deja un [archivo](https://github.com/tecnico2-microsite/MenuDigitalX/blob/main/doc/ACTUALIZAR_X.xml) para importar la tarea (solo debe cambiarse la ruta al archivo como se ve en la imagen)
 
-![Programador de tareas](https://github.com/tecnico2-microsite/MenuDigitalX/blob/master/doc/task.png)
+![Programador de tareas](https://github.com/tecnico2-microsite/MenuDigitalX/blob/main/doc/task.png)
 
 
 
